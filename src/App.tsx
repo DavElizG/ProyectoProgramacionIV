@@ -1,11 +1,15 @@
 import './App.css'
-import Products from './components/Products' // Asegúrate de importar tu componente Products
+import Products from './components/Products' 
+import ProductsProvider from './context/ProductsProvider'
+
 
 function App() {
   return (
-  //  <ProductsProvider>
-      <Products /> 
- //   </ProductsProvider>
+    <>
+      <ProductsProvider>
+        <Products />
+      </ProductsProvider>
+    </>
   )
 }
 

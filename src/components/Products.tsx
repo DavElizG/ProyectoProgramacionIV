@@ -1,6 +1,8 @@
 import React from 'react';
 import ProductsServices from '../hooks/products/GetProducts';
 import { Product } from '../types/Products';
+import Pager from './Pager';
+import './Products.css';
 
 const Products: React.FC = () => {
   const { data: products, loading, error } = ProductsServices();
@@ -9,8 +11,12 @@ const Products: React.FC = () => {
   if (error) return <p>Error!</p>;
 
   return (
-    <>
-      <button>Agregar Producto</button>
+    <div>
+      <div style={{ marginBottom: '20px' }}>
+        <button>Agregar Producto</button>
+
+      </div>
+      <Pager />
       <table className='table-container'>
         <thead>
           <tr className='header-columns'>
@@ -27,7 +33,7 @@ const Products: React.FC = () => {
               <td>{product.id}</td>
               <td>{product.price}</td>
               <td>{product.title}</td>
-              <td>{product.category.name}</td> {/* Aquí se accede a la propiedad 'name' de 'category' */}
+              <td>{product.category.name}</td>
               <td className='column-actions'>
                 <button type='button' onClick={() => console.log('Ver Producto', product.id)}>
                   Ver Producto
@@ -39,11 +45,14 @@ const Products: React.FC = () => {
                   Editar
                 </button>
               </td>
+              
             </tr>
           ))}
         </tbody>
+        
       </table>
-    </>
+      <Pager />
+    </div>
   );
 };
 

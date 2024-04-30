@@ -1,10 +1,11 @@
 // GetProducts.tsx
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ProductsContext from "../../context/ProductsContext";
 
 
 const GetProducts = () => {
- 
+  const { pageNumber } = useContext(ProductsContext);
 
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
@@ -17,7 +18,7 @@ const GetProducts = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://api.escuelajs.co/api/v1/products');
+      const response = await fetch(`https://api.escuelajs.co/api/v1/products?limit=10&${pageNumber}`);
       const data = await response.json();
       setData(data);
     } catch (error) {
