@@ -10,11 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
+
     "bootstrap": "^5.3.3",
-=======
+
     "axios": "^1.6.8",
->>>>>>> 2b54264098eb2f37e8a92f4534f90528ddc554a8
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.0"
