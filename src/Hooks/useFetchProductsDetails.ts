@@ -1,20 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
-import MyContext from '../context/MyContext';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getProductsById } from '../services/ProductService';
+
+// import { useParams } from 'react-router-dom';
 
 const useFetchProductsDetails = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<Product>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { productId, setProductId } = useContext(MyContext);
 
+
+  const { productId } = useParams(); 
+  
   const fetchProducts = async () => {
     try {
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products/${productId}`);
-      if (!response.ok) {
-        throw new Error('Error al obtener los datos');
-      }
-      const data = await response.json();
-      setProducts(data);
+      const data = await getProductsById(productId)
+      setProduct(data);
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -22,20 +23,14 @@ const useFetchProductsDetails = () => {
     }
   };
 
+
   useEffect(() => {
     fetchProducts();
 
-    // Cleanup function
-    return () => {
-      // Si necesitas alguna limpieza al desmontar el componente, agrégalo aquí
-    };
   }, [productId]);
 
-  const ver = (productId: number) => {
-    setProductId(productId);
-  };
-
-  return { products, loading, error, ver };
+  
+  return { product, loading, error };
 };
 
 export default useFetchProductsDetails;
