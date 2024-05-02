@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductTable from './components/ProductTable'
@@ -12,7 +13,9 @@ function App() {
      <BrowserRouter>
       <Routes>
       <Route path="/" Component={ProductTable} />
+
           <Route path="/product/:productId" Component={ProductDetails} />
+          <Route path="/product/:id" Component={ProductDetails} />
           <Route path="/add" Component={ProductAdd} />
           
 
@@ -23,3 +26,6 @@ function App() {
 }
 
 export default App
+
+
+
