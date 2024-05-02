@@ -1,20 +1,17 @@
 import { useState, useEffect } from 'react';
+import { getProducts } from '../services/ProductService';
 
 
 const useFetchProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://api.escuelajs.co/api/v1/products');
-        if (!response.ok) {
-          throw new Error('Error al obtener los datos');
-        }
-        const data = await response.json();
-        setProducts(data);
+        const data = await getProducts();
+        setProducts(data.data);
         setLoading(false);
       } catch (error) {
         setError(error.message);

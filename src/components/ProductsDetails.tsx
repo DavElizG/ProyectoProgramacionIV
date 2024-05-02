@@ -1,12 +1,29 @@
-import React, { useContext } from 'react';
-import MyContext from '../context/MyContext';
-import fetchProductDetails from '../Hooks/useFetchProductsDetails';
+import React from 'react';
+import useFetchProductsDetails from '../Hooks/useFetchProductsDetails';
+
+// import fetchProductDetails from '../Hooks/useFetchProductsDetails';
+
 
 const ProductDetails: React.FC = () => {
   
-  const { products } = fetchProductDetails();
+  // const { products } = fetchProductDetails();
 
-  if (!products) return <p>No se encontraron detalles para el producto.</p>;
+  
+
+  // const [product, setProduct] = useState<Product>({})
+
+
+  // useEffect(() => {
+
+  //   fetch(`https://api.escuelajs.co/api/v1/products/${productId}`)
+  //   .then(response => response.json())
+  //   .then(response => setProduct(response))
+
+  // }, [productId])
+
+  const {product} = useFetchProductsDetails();
+  
+
 
   return (
     <div className="container mt-4">
@@ -15,53 +32,9 @@ const ProductDetails: React.FC = () => {
         <div className="card-body">
           <table className="table table-bordered">
             <tbody>
-            {products?.map((item:any) => (
-         <li key={item.id}>
-          <p>{item.id}</p>  <br />
-         <span> {item.title}</span>
-         </li>
-     
-
-
-
-    ))}
-          { /*   <tr>
-                <th>ID</th>
-                <td>{item.id}</td>
-              </tr>
-              <tr>
-                <th>Título</th>
-                <td>{item.title}</td>
-              </tr>
-              <tr>
-                <th>Precio</th>
-                <td>${item.price}</td>
-              </tr>
-              <tr>
-                <th>Descripción</th>
-                <td>{item.description}</td>
-              </tr>
-              <tr>
-                <th>Categoría</th>
-                <td>{item.category}</td>
-              </tr>
-              <tr>
-                <th>Imágenes</th>
-                <td>
-                  <div className="d-flex flex-wrap">
-                    {item.images.map((image, index) => (
-                      <img
-                        key={index}
-                        src={image}
-                        alt={`Imagen ${index + 1}`}
-                        className="img-thumbnail m-1"
-                        style={{ width: '50px', height: '50px' }}
-                      />
-                    ))}
-                  </div>
-                </td>
-              </tr>
-              */}
+            <div>{product.id}</div>
+            <div>{product.title}</div>
+         
             </tbody>
           </table>
         </div>

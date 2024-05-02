@@ -1,11 +1,13 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import useFetchProducts from '../Hooks/useFetchProducts';
-import useFetchProductsDetails from '../Hooks/useFetchProductsDetails';
+// import useFetchProductsDetails from '../Hooks/useFetchProductsDetails';
 
 const ProductTable = () => {
   const { products, loading, error } = useFetchProducts();
-  const {ver} = useFetchProductsDetails();
+  // const {ver} = useFetchProductsDetails();
+
+console.log(products)
 
   if (loading) return <p>Cargando productos...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -29,7 +31,7 @@ const ProductTable = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products?.map((product:Product) => (
               
               <tr key={product.id}>
                 <td>{product.id}</td>
@@ -52,14 +54,14 @@ const ProductTable = () => {
                 </td>
                 <td className="align-middle">
                   <div className="btn-group" role="group" aria-label="Acciones">
-                  <Link to={`/product/${product.id}`} onClick={() => ver(product.id)}className="btn btn-primary"> Ver</Link>
-                    <Link  onClick={()=> ver(product.id)} to={`/product/${product.id}`} >Ver</Link>
+                  <Link to={`/product/${product.id}`}className="btn btn-primary"> Ver</Link>
+                 
                     <Link to={`/product/edit/${product.id}`} className="btn btn-info">Editar</Link>
-                    {/* Agrega aquí el botón de eliminar si es necesario */}
+                    <Link to={`/product/delete/${product.id}`} className="btn btn-danger">Eliminar</Link>
                   </div>
                 </td>
               </tr>
-            ))}
+            ))} 
           </tbody>
         </table>
       </div>

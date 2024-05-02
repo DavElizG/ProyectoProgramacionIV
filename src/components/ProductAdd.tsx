@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
-import MyContext from '../context/MyContext';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import useFetchAdd from '../Hooks/useFetchAdd';
 
 const ProductAdd: React.FC = () => {
-  const { setProductId } = useContext(MyContext);
+ 
   const [newProduct, setNewProduct] = useState<Product>({
     id: 0,
     title: '',
@@ -12,6 +13,8 @@ const ProductAdd: React.FC = () => {
     category: 0,
     images: [],
   });
+
+  const navigate = useNavigate(); // Obteniendo el objeto de historial
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -39,21 +42,15 @@ const ProductAdd: React.FC = () => {
   };
 
   const handleCancel = () => {
-    setNewProduct({
-      id: 0,
-      title: '',
-      price: 0,
-      description: '',
-      category: 0,
-      images: [],
-    });
+    // Redirigir de vuelta a la página "home"
+    navigate('/');
   };
 
   return (
     <div className="container mt-4">
       <h2>Agregar Producto</h2>
       <form onSubmit={(e) => e.preventDefault()}>
-        <div className="form-group">
+      <div className="form-group">
           <label htmlFor="title">Título:</label>
           <input type="text" id="title" name="title" value={newProduct.title} onChange={handleInputChange} className="form-control" />
         </div>
@@ -63,7 +60,7 @@ const ProductAdd: React.FC = () => {
         </div>
         <div className="form-group">
           <label htmlFor="description">Descripción:</label>
-          <textarea id="description" name="description" value={newProduct.description} onChange={handleInputChange} className="form-control" />
+          <textarea id="description" name="description" value={newProduct.description} onChange={handleInputChange} className="form-control" /><textarea/>
         </div>
         <div className="form-group">
           <label htmlFor="category">Categoría:</label>
@@ -71,9 +68,9 @@ const ProductAdd: React.FC = () => {
         </div>
         <div className="form-group">
           <label htmlFor="images">Imágenes:</label>
-          <input type="text" id="images" name="images" value={newProduct.images.join(',')} onChange={handleInputChange} className="form-control" />
+          <input type="text" id="images" name="images"  onChange={handleInputChange} className="form-control" />
         </div>
-        <button onClick={handleAddProduct} type="button" className="btn btn-primary mr-2">Aceptar</button>
+        <button type="button" onClick={handleAddProduct} className="btn btn-primary mr-2">Aceptar</button>
         <button type="button" onClick={handleCancel} className="btn btn-secondary">Cancelar</button>
       </form>
     </div>
