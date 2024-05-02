@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductTable from './components/ProductTable'
 import ProductDetails from './components/ProductsDetails'
 import ProductAdd from './components/ProductAdd'
+import ProductDelete from './components/ProductDelete';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
           <Route path="/product/:productId" Component={ProductDetails} />
           <Route path="/product/:id" Component={ProductDetails} />
           <Route path="/add" Component={ProductAdd} />
-          
+          <Route path="/delete" Component={ProductDelete} />
 
       </Routes>
     </BrowserRouter>

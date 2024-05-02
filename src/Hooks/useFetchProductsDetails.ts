@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductsById } from '../services/ProductService';
 
-// import { useParams } from 'react-router-dom';
+
 
 const useFetchProductsDetails = () => {
   const [product, setProduct] = useState<Product>({});
@@ -10,12 +10,12 @@ const useFetchProductsDetails = () => {
   const [error, setError] = useState<string | null>(null);
 
 
-  const { productId } = useParams(); 
+  const { productId } = useParams();
   
   const fetchProducts = async () => {
     try {
       const data = await getProductsById(productId)
-      setProduct(data);
+      setProduct(data.data);
       setLoading(false);
     } catch (error) {
       setError(error.message);

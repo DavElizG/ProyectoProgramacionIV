@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import useFetchProducts from '../Hooks/useFetchProducts';
+import ProductDelete from './ProductDelete';
 // import useFetchProductsDetails from '../Hooks/useFetchProductsDetails';
 
 const ProductTable = () => {
@@ -57,7 +58,7 @@ console.log(products)
                   <Link to={`/product/${product.id}`}className="btn btn-primary"> Ver</Link>
                  
                     <Link to={`/product/edit/${product.id}`} className="btn btn-info">Editar</Link>
-                    <Link to={`/product/delete/${product.id}`} className="btn btn-danger">Eliminar</Link>
+                    {product && <ProductDelete productId={product.id} />}
                   </div>
                 </td>
               </tr>
