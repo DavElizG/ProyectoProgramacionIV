@@ -18,7 +18,11 @@ export const createProduct = async (product:any) => {
     return response;
 } 
 
-
+export const productDelete = async (productId:any) => {
+      const response = await axios.delete(`${baseURL}/${productId}`);
+      return response;
+ 
+}
 
 // https://www.freecodecamp.org/espanol/news/como-usar-axios-con-react/
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button} from 'react-bootstrap';
-import { getProductsById } from '../services/ProductService';
+import { getProductsById, productDelete } from '../services/ProductService';
 import axios from 'axios';
 
 interface ProductDeleteProps {
@@ -14,9 +14,10 @@ const ProductDelete: React.FC<ProductDeleteProps> = ({ productId }) => {
   const handleDelete = async () => {
     try {
       console.log('Eliminando producto con ID:', productId);
-      await axios.delete(`https://api.escuelajs.co/api/v1/products/${productId}`);
-      setShowModal(false); // Cierra el modal después de eliminar el producto
-      window.location.reload(); // Recarga la página después de eliminar el producto
+    
+      await productDelete(productId);
+      setShowModal(false); 
+      window.location.reload(); 
     } catch (error) {
       console.error('Error deleting product:', error);
     }

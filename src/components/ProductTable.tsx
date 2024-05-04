@@ -6,7 +6,7 @@ import ProductDelete from './ProductDelete';
 
 const ProductTable = () => {
   const { products, loading, error } = useFetchProducts();
-  // const {ver} = useFetchProductsDetails();
+  
 
 console.log(products)
 
