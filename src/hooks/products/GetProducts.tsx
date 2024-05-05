@@ -18,7 +18,7 @@ const GetProducts = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products?limit=10&${pageNumber}`);
+      const response = await fetch(`https://api.escuelajs.co/api/v1/products?offset=0&limit=10${pageNumber}`);
       const data = await response.json();
       setData(data);
     } catch (error) {
