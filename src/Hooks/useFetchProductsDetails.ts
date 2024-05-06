@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductsById } from '../services/ProductService';
+import { Product } from '../types/Product';
 
 
 

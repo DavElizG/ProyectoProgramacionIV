@@ -5,6 +5,7 @@ import ProductTable from './components/ProductTable'
 import ProductDetails from './components/ProductsDetails'
 import ProductAdd from './components/ProductAdd'
 import ProductDelete from './components/ProductDelete';
+import ProductEdit from './components/ProductEdit';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
           <Route path="/product/:id" Component={ProductDetails} />
           <Route path="/add" Component={ProductAdd} />
           <Route path="/delete" Component={ProductDelete} />
-
+          <Route path="/edit/:productId" Component={ProductEdit} />
       </Routes>
     </BrowserRouter>
     </>
@@ -28,5 +29,5 @@ function App() {
 
 export default App
 
-
+//<Route path="/edit/:productId" Component={ProductEdit} />
 

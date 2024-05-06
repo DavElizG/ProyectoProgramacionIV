@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useFetchAdd from '../Hooks/useFetchAdd';
+import { Product } from '../types/Product';
 
 const ProductAdd: React.FC = () => {
  
