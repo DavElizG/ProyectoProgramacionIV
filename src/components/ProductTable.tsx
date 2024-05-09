@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import useFetchProducts from '../Hooks/useFetchProducts';
+import ProductDelete from './ProductDelete';
 
 
 
@@ -88,7 +89,7 @@ const ProductTable = () => {
                   <div className="btn-group" role="group" aria-label="Acciones">
                     <Link to={`/product/${product.id}`} className="btn btn-primary">Ver</Link>
                     <Link to={`/product/edit/${product.id}`} className="btn btn-info">Editar</Link>
-                    {/* Agregar aquí el botón de eliminar si es necesario */}
+                    {product && <ProductDelete productId={product.id} />}
                   </div>
                 </td>
               </tr>
