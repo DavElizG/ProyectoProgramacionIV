@@ -24,6 +24,6 @@ export const productDelete = async (productId:any) => {
  
 }
 
-// https://www.freecodecamp.org/espanol/news/como-usar-axios-con-react/
+
 
 

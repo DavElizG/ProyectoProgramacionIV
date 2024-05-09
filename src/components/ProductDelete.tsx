@@ -30,7 +30,7 @@ const ProductDelete: React.FC<ProductDeleteProps> = ({ productId }) => {
         Eliminar 
       </button>
 
-      {/* Modal para confirmar la eliminación del producto */}
+      
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Confirmar Eliminación</Modal.Title>

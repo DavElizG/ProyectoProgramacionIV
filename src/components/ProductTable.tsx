@@ -10,20 +10,20 @@ const ProductTable = () => {
   const { products, loading, error } = useFetchProducts();
 
 
-  const [currentPage, setCurrentPage] = useState(0); // Estado para la página actual
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
+  const [currentPage, setCurrentPage] = useState(0); 
+  const [searchTerm, setSearchTerm] = useState(''); 
 
-  const itemsPerPage = 5; // Cantidad de productos por página
+  const itemsPerPage = 5; 
 
   if (loading) return <p>Cargando productos...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  // Filtrar productos basándose en el término de búsqueda
+  // Filtrar productos 
   const filteredItems = products.filter((product) =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Calcular índices de inicio y fin para la paginación
+  
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
@@ -34,8 +34,10 @@ const ProductTable = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(0); // Reiniciar la página cuando se realiza una nueva búsqueda
+    setCurrentPage(0); 
   };
+
+
 
   return (
     <div className="container mt-4">
@@ -51,9 +53,7 @@ const ProductTable = () => {
         />
       </div>
       <div className="table-responsive">
-        {/* Utilizar clases de Bootstrap para la tabla */}
         <table className="table table-bordered table-striped">
-          {/* Encabezados de la tabla */}
           <thead className="thead-dark">
             <tr>
               <th>ID</th>
@@ -64,7 +64,6 @@ const ProductTable = () => {
               <th>Acciones</th>
             </tr>
           </thead>
-          {/* Cuerpo de la tabla */}
           <tbody>
             {currentItems.map((product) => (
               <tr key={product.id}>
@@ -97,8 +96,6 @@ const ProductTable = () => {
           </tbody>
         </table>
       </div>
-
-      {/* Paginación */}
       <ReactPaginate
         previousLabel="Anterior"
         nextLabel="Siguiente"
