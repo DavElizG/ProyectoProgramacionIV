@@ -11,17 +11,14 @@ function App() {
 
   return (
     <>
-     <BrowserRouter>
-      <Routes>
-      <Route path="/" Component={ProductTable} />
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" Component={ProductTable} />
           <Route path="/product/:productId" Component={ProductDetails} />
           <Route path="/product/:id" Component={ProductDetails} />
           <Route path="/add" Component={ProductAdd} />
-          <Route path="/delete" Component={ProductDelete} />
-
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

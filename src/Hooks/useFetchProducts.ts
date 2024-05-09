@@ -1,29 +1,32 @@
 import { useState, useEffect } from 'react';
-import { getProducts } from '../services/ProductService';
-
+import { Product } from '../types/Product';
 
 const useFetchProducts = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await getProducts();
-        setProducts(data.data);
+        const response = await fetch('https://api.escuelajs.co/api/v1/products');
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos');
+        }
+        const data = await response.json();
+        setProducts(data);
         setLoading(false);
-      } catch (error) {
-        setError(error.message);
+      } catch  {
+        setError(error);
         setLoading(false);
       }
     };
 
     fetchProducts();
 
-    // Cleanup function
+    
     return () => {
-      // Si necesitas alguna limpieza al desmontar el componente, agrégalo aquí
+      
     };
   }, []);
 
