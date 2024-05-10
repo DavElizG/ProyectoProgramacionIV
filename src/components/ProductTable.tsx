@@ -46,7 +46,7 @@ const ProductTable = () => {
         <Link to="/add" className="btn btn-success mb-3">Agregar Producto</Link>
         <input
           type="text"
-          className="form-control"
+          className="form-control input-sm"
           placeholder="Buscar por nombre"
           value={searchTerm}
           onChange={handleSearchChange}

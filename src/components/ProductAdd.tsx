@@ -4,6 +4,7 @@ import useFetchAdd from '../Hooks/useFetchAdd';
 import { useNavigate } from 'react-router-dom';
 
 const ProductAdd: React.FC<{
+  
   onSubmit: (values: { title: string; price: number; description: string; categoryId: number; images: string[] }) => void;
 }> = ({ onSubmit }) => {
   const { register, handleSubmit, setValue } = useForm<{
@@ -47,23 +48,23 @@ const ProductAdd: React.FC<{
       <h2>Agregar Producto</h2>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <div className="mb-3">
-          <label htmlFor="title" className="form-label">Title:</label>
+          <label  className="form-label">Title:</label>
           <input type="text" className="form-control" id="title" {...register('title')} />
         </div>
         <div className="mb-3">
-          <label htmlFor="price" className="form-label">Price:</label>
+          <label className="form-label">Price:</label>
           <input type="number" className="form-control" id="price" {...register('price')} />
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">Description:</label>
+          <label  className="form-label">Description:</label>
           <input type="text" className="form-control" id="description" {...register('description')} />
         </div>
         <div className="mb-3">
-          <label htmlFor="categoryId" className="form-label">Category ID:</label>
+          <label className="form-label">Category ID:</label>
           <input type="number" className="form-control" id="categoryId" {...register('categoryId')} />
         </div>
         <div className="mb-3">
-          <label htmlFor="images" className="form-label">Images:</label>
+          <label className="form-label">Images:</label>
           <input type="text" className="form-control" id="images" onChange={handleImagesChange} />
         </div>
         <button type="submit" className="btn btn-primary" disabled={isLoading}>Aceptar</button>
