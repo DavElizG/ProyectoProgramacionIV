@@ -16,8 +16,8 @@ const useFetchProductEdit = () => {
                 const { data } = await getProductsById(productId);
                 setProduct(data);
                 setLoading(false);
-            } catch (error) {
-                setError(error.message);
+            } catch  {
+                setError(error);
                 setLoading(false);
             }
         };
@@ -29,8 +29,8 @@ const useFetchProductEdit = () => {
         try {
             await updateProduct(productId || '', updatedProduct);
             setProduct(updatedProduct);
-        } catch (error) {
-            setError(error.message);
+        } catch {
+            setError(error);
         }
     };
 
