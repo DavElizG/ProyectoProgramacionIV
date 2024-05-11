@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductsServices from '../hooks/products/GetProducts';
 import { Product } from '../types/Products';
 import Pager from './Pager';
 import './Products.css';
+import ProductForm from './ProductsForm';
 
 const Products: React.FC = () => {
   const { data: products, loading, error } = ProductsServices();
+  const [showForm, setShowForm] = useState(false); // Estado para controlar la visibilidad del formulario
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
@@ -13,8 +15,14 @@ const Products: React.FC = () => {
   return (
     <div>
       <div style={{ marginBottom: '20px' }}>
-        <button>Agregar Producto</button>
-
+        <button onClick={() => setShowForm(!showForm)}>Agregar Producto</button>
+        {showForm && <ProductForm onSubmit={function (values: { title: string; price: number; description: string; categoryId: number; images: string[]; }): void {
+          throw new Error('Function not implemented.');
+        } } onCancel={function (): void {
+          throw new Error('Function not implemented.');
+        } } />} {/* Renderiza el formulario si showForm es true */}
+     
+      
       </div>
       <Pager />
       <table className='table-container'>
