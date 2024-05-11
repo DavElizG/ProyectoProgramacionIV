@@ -1,21 +1,21 @@
 // ProductEdit.tsx
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useFetchProductEdit from '../Hooks/useFetchProductEdit';
 
 const ProductEdit: React.FC = () => {
     useParams<{ productId: string; }>();
     const { formData, loading, error, handleUpdateProduct, handleInputChange, handleImagesChange } = useFetchProductEdit();
-
+    const navigate = useNavigate();
     const handleCancel = () => {
-        window.location.href = '/'; // Redirige a la página principal y actualiza la página
-    };
+        navigate('/');
+      };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             await handleUpdateProduct();
-            window.location.href = '/'; // Redirige a la página principal y actualiza la página
+            navigate('/');
         } catch (error) {
             console.error('Error al actualizar producto:', error);
         }
