@@ -87,7 +87,7 @@ const ProductTable = () => {
                 <td className="align-middle">
                   <div className="btn-group" role="group" aria-label="Acciones">
                     <Link to={`/product/${product.id}`} className="btn btn-primary">Ver</Link>
-                    <Link to={`/product/edit/${product.id}`} className="btn btn-info">Editar</Link>
+                    <Link to={`/edit/${product.id}`} className="btn btn-info">Editar</Link>
                     {product && <ProductDelete productId={product.id} />}
                   </div>
                 </td>

@@ -24,6 +24,15 @@ export const productDelete = async (productId:any) => {
  
 }
 
+export const updateProduct = async (productId: string, product: any) => {
+    try {
+        const response = await axios.put(`${baseURL}/${productId}`, product);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data.message);
+    }
+};
+
 
 
 
