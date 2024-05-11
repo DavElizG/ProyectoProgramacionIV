@@ -66,11 +66,9 @@ const useFetchProductEdit = () => {
         }));
     };
 
-    const handleCancel = () => {
-        // Aquí podrías implementar la lógica para cancelar la edición
-    };
 
-    return { product, formData, loading, error, handleUpdateProduct, handleInputChange, handleImagesChange, handleCancel };
+
+    return { product, formData, loading, error, handleUpdateProduct, handleInputChange, handleImagesChange };
 };
 
 export default useFetchProductEdit;
